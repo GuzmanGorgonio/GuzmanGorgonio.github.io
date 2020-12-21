@@ -1,0 +1,25 @@
+<p> Un histograma nos da una idea general del tipo de valores que tenemos disponibles en nuestro dataset
+Primero sacamos la tasa de homicidios dividiendo los homicidios de cada Estado entre su población y la agregamos al dataset que ya teníamos. Ahora tenemos una nueva columna
+
+> murders <- mutate(murders, rate = total / population * 100000)
+> head(murders)
+       state abb region population total     rate
+1    Alabama  AL  South    4779736   135 2.824424
+2     Alaska  AK   West     710231    19 2.675186
+3    Arizona  AZ   West    6392017   232 3.629527
+4   Arkansas  AR  South    2915918    93 3.189390
+5 California  CA   West   37253956  1257 3.374138
+6   Colorado  CO   West    5029196    65 1.292453
+
+Con esto Podemos crear un histograma que, dentro de un intervalo, nos dice que tanto aparece cada valor.
+
+
+> hist(murders$rate)
+ 
+Podemos observar que la mayoría de los casos caen en los valores mas bajos, la tendencia a tener una tasa de homicidios baja es clara en los Estados Unidos. Claro que podemos observar que hay excepciones, con un valor muy alto y alejado de los demás.
+Para saber cual es el lugar que tiene este número de homicidios tan lato utilizamos 
+
+> murder_state[which.max(murders$rate)]
+[1] "District of Columbia"
+ 
+Podemos observar que el Estado con la mayor tasa de asesinatos es el Distrito de Columbia </p>
